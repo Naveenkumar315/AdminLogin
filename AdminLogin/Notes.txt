@@ -1,0 +1,2 @@
+1. To Use a form install npm - npm i react-hook-form
+   

@@ -2,30 +2,29 @@ import React, { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
 import HowToRegOutlinedIcon from "@mui/icons-material/HowToRegOutlined";
+import { useForm } from "react-hook-form";
 
 const Signup = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const [isSignUp, setSignUp] = useState(false);
-  const [input, setInput] = useState({
-    name: "", 
-    email: "",
-    password: "",
-  });
 
   const handleReset = () => {
     setSignUp(!isSignUp);
-    setInput(() => ({
-      name: "",
-      email: "",
-      password: "",
-    }));
+    reset();
   };
-  const handleSubmit = (e:any) => {
-    e.preventDefault();
+  const Submit = (e: any) => {
+    debugger;
+    console.log(e);
   };
   return (
     <>
-    <div>
-        <form onSubmit={handleSubmit}>
+      <div>
+        <form onSubmit={handleSubmit(Submit)}>
           <Box
             display="flex"
             flexDirection={"column"}
@@ -51,49 +50,62 @@ const Signup = () => {
               {isSignUp ? "SignUp" : "Login"}
             </Typography>
             {isSignUp && (
+              <div style={{ minWidth: "70%" }}>
+                <TextField
+                  sx={{ minWidth: "100%" }}
+                  margin="normal"
+                  type="text"
+                  variant="outlined"
+                  placeholder="Name"
+                  {...register("name", { required: true, minLength: 3 })}
+                />
+                {errors.name?.type === "required" && (
+                  <p>The name field is required</p>
+                )}
+                {errors.name?.type === "minLength" && (
+                  <p>The name must be at least 3 character</p>
+                )}
+              </div>
+            )}
+            <div style={{ minWidth: "70%" }}>
               <TextField
+                sx={{ minWidth: "100%" }}
                 margin="normal"
                 type="text"
                 variant="outlined"
-                placeholder="Name"
-                value={input.name}
-                name="name"
-                onChange={(e) =>
-                  setInput((prevInput) => ({
-                    ...prevInput,
-                    name: e.target.value,
-                  }))
-                }
+                placeholder="Email"
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: /^\S+@\S+\.\S+$/,
+                })}
               />
-            )}
-            <TextField
-              margin="normal"
-              type="text"
-              variant="outlined"
-              placeholder="Email"
-              value={input.email}
-              name="email"
-              onChange={(e) =>
-                setInput((prevInput) => ({
-                  ...prevInput,
-                  email: e.target.value,
-                }))
-              }
-            />
-            <TextField
-              margin="normal"
-              type="text"
-              variant="outlined"
-              placeholder="Password"
-              value={input.password}
-              name="password"
-              onChange={(e) =>
-                setInput((prevInput) => ({
-                  ...prevInput,
-                  password: e.target.value,
-                }))
-              }
-            />
+              {errors.email?.type === "required" && (
+                <p>The email field is required</p>
+              )}
+              {errors.email?.type === "pattern" && <p>Invalid email address</p>}
+            </div>
+            <div style={{ minWidth: "70%" }}>
+              <TextField
+                sx={{ minWidth: "100%" }}
+                margin="normal"
+                type="text"
+                variant="outlined"
+                placeholder="Password"
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 6 characters",
+                  },
+                })}
+              />
+              {errors.password?.type === "required" && (
+                <p>Password is required</p>
+              )}
+              {errors.password?.type === "minLength" && (
+                <p>Password must be at least 6 characters</p>
+              )}
+            </div>
             <Button
               sx={{ marginTop: 3, borderRadius: 3 }}
               variant="contained"
@@ -117,7 +129,7 @@ const Signup = () => {
         </form>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;
