@@ -1,0 +1,11 @@
+npm init
+npm i express mongoose cors nodemon
+
+1. create server.js
+2. .env created
+3. gitignore added
+4. db file created
+5. to create Rest Api 
+   1. create router file. write router function and export that.
+   2. import into server file. in router file we can import the api file link.
+
