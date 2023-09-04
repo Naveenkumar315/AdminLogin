@@ -42,6 +42,7 @@ const Signup = () => {
   return (
     <>
       <div className="container">
+        <h1>Hello Word</h1>
         <div>
           <Typography
             variant="h4"
