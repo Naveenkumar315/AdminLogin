@@ -1,0 +1,55 @@
+* {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  }
+  
+  .container {
+    width: 450px;
+    overflow: auto;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 5px 5px 10px #ccc;
+    border-radius: 5px;
+  }
+  
+  .container:hover {
+    box-shadow: 10px 10px 20px #ccc;
+  }
+  
+  .title {
+    text-align: center;
+    margin: 30px;
+    text-shadow: 2px 2px #ccc;
+  }
+
+  .inputContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .inputRow{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+  }
+  
+  .processInput {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+  }
+  .submitBtn{
+    margin-bottom: 20px;
+  }
+
+  .forgetpaswordContainer{
+    text-align: end;
+  }
+
+  .forgetpasword{
+    color: #1976d2;
+    font-size: 12px;
+  }
+  
