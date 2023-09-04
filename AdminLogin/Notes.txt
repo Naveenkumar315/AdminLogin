@@ -1,2 +1,3 @@
 1. To Use a form install npm - npm i react-hook-form
-   
+
+2. Define the Interface Outside the Component, inside interface value should not come coma, it should come semicolan

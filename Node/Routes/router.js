@@ -1,12 +1,12 @@
 const express = require("express");
 
 // import Api links
-const getdata = require("../API/getData");
+const signUser = require("../API/signUser");
 
 function ApiRoutes() {
   const router = express.Router();
 
-  router.use("/getdata", getdata);
+  router.use("/signUser", signUser);
 
   return router;
 }
