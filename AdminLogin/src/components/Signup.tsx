@@ -28,17 +28,36 @@ const Signup = () => {
   };
 
   const handleSubmit = () => {
+    debugger
+    if(isSignUp){
+    if(!formData.username || !formData.email || !formData.password){
+      alert('please enter values')
+      return
+    }
     AppService.signupUser(formData)
       .then((res) => {
         if (res.data.res === 1) {
           alert("user created");
           // setFormData(initialFormData)
         }
+        if(res.data.res === 2){     
+          alert('user already created')
+        }
       })
       .catch((err) => {
         console.log(err);
       });
+    }else{
+      AppService.loginUser({}).then((res)=>{
+        console.log("res",res);
+        
+      }).catch((err)=>{
+        console.log(err);
+        
+      })
+    }
   };
+  
   return (
     <>
       <div className="container">

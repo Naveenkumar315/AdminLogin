@@ -2,5 +2,5 @@ import axios from "axios";
 
 // configuration object
 export default axios.create({
-  baseURL: "http://localhost:1000/api",
+  baseURL: "http://" + window.location.hostname + ":1000/api",
 });
