@@ -1,8 +1,40 @@
 const express = require("express");
 const router = express.Router();
+const db = require("../DB/db");
+const bcrypt = require("bcryptjs");
+var jwt = require("jsonwebtoken");
 
-router.get("/", (req, res) => {
-  res.send({ Message: "Hello.........." });
+router.post("/", async (req, res) => {
+  try {
+    let userColl = db.collection("user");
+
+    const email_Id = req.body.email;
+    const password = req.body.password;
+
+    let userData = await userColl.findOne({ email: email_Id });
+    if (!userData) {
+      res.json({ Message: "User Id Not Exist" });
+    }
+
+    let pass = await bcrypt.compare(password, userData.password);
+    if (!pass) {
+      res.json({ Message: "Password is Incorrect" });
+    }
+
+    if (userData && pass) {
+      const jwt_token = jwt.sign({ userId: email_Id }, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: "24h",
+      });
+
+      res.status(200).send({
+        message: "Login Successful",
+        email: email_Id,
+        token: jwt_token,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 module.exports = router;

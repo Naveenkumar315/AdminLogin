@@ -5,10 +5,10 @@ const { hash } = require("bcryptjs");
 
 router.post("/", async (req, res) => {
   try {
-    let userCollection = db.collection("user");
+    let userColl = db.collection("user");
 
     // 1. check if user already exists
-    const user = await userCollection.findOne({ email: req.body.email });
+    const user = await userColl.findOne({ email: req.body.email });
 
     // if user exists already, return error
     if (user) {
@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
     const passwordHash = await hash(req.body.password, 10);
 
     // 2. if user doesn't exist, create a new user
-    await userCollection
+    await userColl
       .insertOne({
         username: req.body.username,
         email: req.body.email,

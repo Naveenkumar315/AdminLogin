@@ -4,8 +4,11 @@ class AppService {
   signupUser(data:any) {
     return apiClient.post("/signUser", data);
   }
-  loginUser(data:object){
-    return apiClient.get("/login", data)
+  loginUser(data:any){
+    return apiClient.post("/login", data)
+  }
+  getuserlist(){
+    return apiClient.post("/getuserlist")
   }
 }
 

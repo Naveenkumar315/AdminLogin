@@ -9,3 +9,10 @@ npm i express mongoose cors nodemon
    1. create router file. write router function and export that.
    2. import into server file. in router file we can import the api file link.
 
+
+JWT Token:
+Access Token: This token infinite expire time, we can use only one time and this has limited time to access.
+Refresh Token: Once the access key used that will be expired, so with the help of Refresh key we can generate one new access key.
+
+apiClient - we need set the token to the headers, and then give cors origin access for the token key also in server file.
+

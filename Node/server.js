@@ -12,7 +12,7 @@ app.use(
   cors({
     origin: process.env.ORIGIN,
     optionsSuccessStatus: 200,
-    allowedHeaders: ["Content-Type"],
+    allowedHeaders: ["Content-Type", "Authorization"], // Include "Authorization" header - need to include whatever we are setting the headers in frontend
     exposedHeaders: ["Content-Type"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,

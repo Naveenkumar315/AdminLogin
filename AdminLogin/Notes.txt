@@ -3,3 +3,5 @@
 2. Define the Interface Outside the Component, inside interface value should not come coma, it should come semicolan
 
 3. to exit a git = :qa and enter
+
+4. Routing - need to import routes in app.tsx file
