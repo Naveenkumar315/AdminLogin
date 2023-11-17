@@ -1,0 +1,12 @@
+.container_Top{
+    background-color: red;
+    height: 2.5rem;
+    width: 100%;
+    position: absolute;
+}
+.userName{
+    text-align: end;
+    font-weight: bold;
+    padding: 10px;
+    text-transform: capitalize;
+}

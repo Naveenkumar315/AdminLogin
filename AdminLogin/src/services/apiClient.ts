@@ -1,7 +1,7 @@
 import axios from "axios";
 
-axios.defaults.headers["Content-Type"] = "application/json"; // Set Content-Type header in common object
-axios.defaults.headers["Accept"] = "application/json";
+// axios.defaults.headers["Content-Type"] = "application/json"; // Set Content-Type header in common object
+// axios.defaults.headers["Accept"] = "application/json";
 const token = sessionStorage.getItem("token");
 if (token) {
   axios.defaults.headers["Authorization"] = `${token}`;

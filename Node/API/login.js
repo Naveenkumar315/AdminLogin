@@ -13,12 +13,12 @@ router.post("/", async (req, res) => {
 
     let userData = await userColl.findOne({ email: email_Id });
     if (!userData) {
-      res.json({ Message: "User Id Not Exist" });
+      res.status(401).send({Message: "User Id Not Exist"})
     }
 
     let pass = await bcrypt.compare(password, userData.password);
     if (!pass) {
-      res.json({ Message: "Password is Incorrect" });
+      res.status(401).send({Message: "Password is Incorrect"})
     }
 
     if (userData && pass) {
@@ -30,6 +30,7 @@ router.post("/", async (req, res) => {
         message: "Login Successful",
         email: email_Id,
         token: jwt_token,
+        username: userData.username
       });
     }
   } catch (error) {

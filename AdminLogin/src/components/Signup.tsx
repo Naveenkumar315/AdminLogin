@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
 import HowToRegOutlinedIcon from "@mui/icons-material/HowToRegOutlined";
-import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import AppService from "../services/service";
 import { Input } from "antd";
 import "./Signup.css";
+import service from "../services/service";
 
 interface formData {
   username: string;
@@ -27,40 +28,84 @@ const Signup = () => {
     setFormData(initialFormData);
   };
 
+  const navigate: any = useNavigate();
+
   const handleSubmit = () => {
-    debugger
-    if(isSignUp){
-    if(!formData.username || !formData.email || !formData.password){
-      alert('please enter values')
-      return
-    }
-    AppService.signupUser(formData)
-      .then((res) => {
-        if (res.data.res === 1) {
-          alert("user created");
-          // setFormData(initialFormData)
-        }
-        if(res.data.res === 2){     
-          alert('user already created')
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    }else{
-      AppService.loginUser({}).then((res)=>{
-        console.log("res",res);
-        
-      }).catch((err)=>{
-        console.log(err);
-        
-      })
+    debugger;
+    // navigate("/Dashboard");
+
+    if (isSignUp) {
+      if (!formData.username || !formData.email || !formData.password) {
+        alert("please enter values");
+        return;
+      }
+      AppService.signupUser(formData)
+        .then((res) => {
+          if (res.data.res === 1) {
+            alert("user created");
+            // setFormData(initialFormData)
+          }
+          if (res.data.res === 2) {
+            alert("user already created");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      if (!formData.email || !formData.password) {
+        alert("please enter values");
+        return;
+      }
+      debugger;
+      AppService.loginUser(formData)
+        .then((res: any) => {
+          console.log("res", res);
+          if (res.status === 200) {
+            setToken(res?.data?.token);
+            setSession("userName", res?.data?.username);
+            navigate("/Dashboard");
+          } else {
+            alert(res.data.Message);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          alert(err?.response?.data?.Message);
+        });
     }
   };
-  
+
+  const setToken = (token: string) => {
+    return sessionStorage.setItem("token", token);
+  };
+
+  const setSession = (key: any, val: any) => {
+    return sessionStorage.setItem(key, val);
+  };
+
+  const verifyToken = () => {
+    service
+      .getuserlist()
+      .then((res) => {
+        console.log("res.......", res);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  };
+
   return (
     <>
       <div className="container">
+        <button
+          type="button"
+          onClick={() => {
+            verifyToken();
+          }}
+        >
+          verify
+        </button>
         <div>
           <Typography
             variant="h4"
@@ -131,6 +176,7 @@ const Signup = () => {
           >
             Change to {isSignUp ? "LOGIN" : "SIGNUP"}
           </Button>
+          {/* <Buttons onClick={handleSubmit} color="white" background="#050236" className="normal" text='Signup'/> */}
         </div>
       </div>
     </>
@@ -138,3 +184,9 @@ const Signup = () => {
 };
 
 export default Signup;
+
+export const getToken = () => {
+  const token = sessionStorage.getItem("token");
+  console.log("Retrieved token from sessionStorage:", token);
+  return token;
+};
