@@ -192,6 +192,7 @@ const Signup = () => {
 export default Signup;
 
 export const getToken = () => {
+  console.log('console added')
   const token = sessionStorage.getItem("token");
   console.log("Retrieved token from sessionStorage:", token);
   return token;
