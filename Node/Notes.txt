@@ -16,3 +16,9 @@ Refresh Token: Once the access key used that will be expired, so with the help o
 
 apiClient - we need set the token to the headers, and then give cors origin access for the token key also in server file.
 
+errors:
+1. Use the optional chaining operator (?) to handle situations where a variable may be undefined, null, or empty, preventing unwanted errors.
+2. Utilize the optional chaining operator (?) to avoid unintended errors when accessing properties in a chain, especially when dealing with undefined or null values.
+3. When performing calculations and assigning values, ensure that the variables being added have a valid numeric value, checking for '0' or other conditions as needed before the addition operation.
+4. In a loop, ensure that there is a check to confirm the array or collection has a minimum length of 1 before proceeding with the iteration.
+

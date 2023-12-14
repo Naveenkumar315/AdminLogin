@@ -10,6 +10,9 @@ class AppService {
   getuserlist(){
     return apiClient.post("/getuserlist")
   }
+  sessionLogout(data:any){
+    return apiClient.post("/sessionLogout", data)
+  }
 }
 
 export default new AppService();

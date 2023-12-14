@@ -60,10 +60,14 @@ const Signup = () => {
       debugger;
       AppService.loginUser(formData)
         .then((res: any) => {
+          debugger
           console.log("res", res);
           if (res.status === 200) {
             setToken(res?.data?.token);
             setSession("userName", res?.data?.username);
+            sessionStorage.setItem("logoutTime", res?.data?.logoutTime);
+            sessionStorage.setItem("loginTime", res?.data?.loginTime);
+            sessionStorage.setItem("email", res?.data?.email);
             navigate("/Dashboard");
           } else {
             alert(res.data.Message);
@@ -94,6 +98,8 @@ const Signup = () => {
         console.log("err", err);
       });
   };
+
+  setInterval
 
   return (
     <>
