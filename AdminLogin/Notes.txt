@@ -5,3 +5,9 @@
 3. to exit a git = :qa and enter
 
 4. Routing - need to import routes in app.tsx file
+
+5. component name should always caps 
+for example - <LeftMenu />
+
+6. in map with html if we want to access debugger mode we need to use return method
+7. each loop have unique key - this is for first child element

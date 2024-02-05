@@ -1,39 +1,135 @@
-import React, { useEffect } from "react";
-import TopBar from "./TopBar";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
-import Appservice from "../services/service";
+import React from "react";
 
 const Dashboard = () => {
-  const navigate: any = useNavigate();
-  
-  useEffect(() => {
-    // Set up the interval to call the function every 10 seconds
-    const intervalId = setInterval(sessionLogout, 5000);
-
-    // Clear the interval when the component is unmounted
-    return () => clearInterval(intervalId);
-  }, []); // Empty dependency array ensures that the effect runs only once on mount
-
-
-  const sessionLogout = () =>{
-    const obj = {
-      loginTime: sessionStorage.getItem('loginTime'),
-      email : sessionStorage.getItem('email')
-    }
-    Appservice.sessionLogout(obj).then((res)=>{
-      if(res.data === 1){
-        navigate('/');
-        sessionStorage.clear();
-      }
-    }).catch((err)=>{
-      console.log(`err: ${err}`);
-      
-    })
-  }
-
   return (
     <>
-      <TopBar />
+      <div>
+        Important: Only log into sensitive websites on devices of people that
+        you trust. Owners may be able to gain access to your data. In Guest
+        mode, you won't see or change any other Chrome profile's info. When you
+        exit Guest mode, your browsing activity is deleted from the computer.
+        Use Guest mode for: Letting others borrow your computer or borrowing
+        someone else’s computer. Using a public computer, like one at a library
+        or cafe. If you want to browse privately on your own computer, use
+        Incognito mode. You'll see your info and settings without saving any
+        browsing history. Important: Only log into sensitive websites on devices
+        of people that you trust. Owners may be able to gain access to your
+        data. In Guest mode, you won't see or change any other Chrome profile's
+        info. When you exit Guest mode, your browsing activity is deleted from
+        the computer. Use Guest mode for: Letting others borrow your computer or
+        borrowing someone else’s computer. Using a public computer, like one at
+        a library or cafe. If you want to browse privately on your own computer,
+        use Incognito mode. You'll see your info and settings without saving any
+        browsing history. Important: Only log into sensitive websites on devices
+        of people that you trust. Owners may be able to gain access to your
+        data. In Guest mode, you won't see or change any other Chrome profile's
+        info. When you exit Guest mode, your browsing activity is deleted from
+        the computer. Use Guest mode for: Letting others borrow your computer or
+        borrowing someone else’s computer. Using a public computer, like one at
+        a library or cafe. If you want to browse privately on your own computer,
+        use Incognito mode. You'll see your info and settings without saving any
+        browsing history.Important: Only log into sensitive websites on devices
+        of people that you trust. Owners may be able to gain access to your
+        data. In Guest mode, you won't see or change any other Chrome profile's
+        info. When you exit Guest mode, your browsing activity is deleted from
+        the computer. Use Guest mode for: Letting others borrow your computer or
+        borrowing someone else’s computer. Using a public computer, like one at
+        a library or cafe. If you want to browse privately on your own computer,
+        use Incognito mode. You'll see your info and settings without saving any
+        browsing history. Important: Only log into sensitive websites on devices
+        of people that you trust. Owners may be able to gain access to your
+        data. In Guest mode, you won't see or change any other Chrome profile's
+        info. When you exit Guest mode, your browsing activity is deleted from
+        the computer. Use Guest mode for: Letting others borrow your computer or
+        borrowing someone else’s computer. Using a public computer, like one at
+        a library or cafe. If you want to browse privately on your own computer,
+        use Incognito mode. You'll see your info and settings without saving any
+        browsing history. orrowing someone else’s computer. Using a public
+        computer, like one at a library or cafe. If you want to browse privately
+        on your own computer, use Incognito mode. You'll see your info and
+        settings without saving any browsing history. Important: Only log into
+        sensitive websites on devices of people that you trust. Owners may be
+        able to gain access to your data. In Guest mode, you won't see or change
+        any other Chrome profile's info. When you exit Guest mode, your browsing
+        activity is deleted from the computer. Use Guest mode for: Letting
+        others borrow your computer or borrowing someone else’s computer. Using
+        a public computer, like one at a library or cafe. If you want to browse
+        privately on your own computer, use Incognito mode. You'll see your info
+        and settings without saving any browsing history.Important: Only log
+        into sensitive websites on devices of people that you trust. Owners may
+        be able to gain access to your data. In Guest mode, you won't see or
+        change any other Chrome profile's info. When you exit Guest mode, your
+        browsing activity is deleted from the computer. Use Guest mode for:
+        Letting others borrow your computer or borrowing someone else’s
+        computer. Using a public computer, like one at a library or cafe. If you
+        want to browse privately on your own computer, use Incognito mode.
+        You'll see your info and settings without saving any browsing history.
+        Important: Only log into sensitive websites on devices of people that
+        you trust. Owners may be able to gain access to your data. In Guest
+        mode, you won't see or change any other Chrome profile's info. When you
+        exit Guest mode, your browsing activity is deleted from the computer.
+        Use Guest mode for: Letting others borrow your computer or borrowing
+        someone else’s computer. Using a public computer, like one at a library
+        or cafe. If you want to browse privately on your own computer, use
+        Incognito mode. You'll see your info and settings without saving any
+        browsing history. orrowing someone else’s computer. Using a public
+        computer, like one at a library or cafe. If you want to browse privately
+        on your own computer, use Incognito mode. You'll see your info and
+        settings without saving any browsing history. Important: Only log into
+        sensitive websites on devices of people that you trust. Owners may be
+        able to gain access to your data. In Guest mode, you won't see or change
+        any other Chrome profile's info. When you exit Guest mode, your browsing
+        activity is deleted from the computer. Use Guest mode for: Letting
+        others borrow your computer or borrowing someone else’s computer. Using
+        a public computer, like one at a library or cafe. If you want to browse
+        privately on your own computer, use Incognito mode. You'll see your info
+        and settings without saving any browsing history.Important: Only log
+        into sensitive websites on devices of people that you trust. Owners may
+        be able to gain access to your data. In Guest mode, you won't see or
+        change any other Chrome profile's info. When you exit Guest mode, your
+        browsing activity is deleted from the computer. Use Guest mode for:
+        Letting others borrow your computer or borrowing someone else’s
+        computer. Using a public computer, like one at a library or cafe. If you
+        want to browse privately on your own computer, use Incognito mode.
+        You'll see your info and settings without saving any browsing history.
+        Important: Only log into sensitive websites on devices of people that
+        you trust. Owners may be able to gain access to your data. In Guest
+        mode, you won't see or change any other Chrome profile's info. When you
+        exit Guest mode, your browsing activity is deleted from the computer.
+        Use Guest mode for: Letting others borrow your computer or borrowing
+        someone else’s computer. Using a public computer, like one at a library
+        or cafe. If you want to browse privately on your own computer, use
+        Incognito mode. You'll see your info and settings without saving any
+        browsing history. orrowing someone else’s computer. Using a public
+        computer, like one at a library or cafe. If you want to browse privately
+        on your own computer, use Incognito mode. You'll see your info and
+        settings without saving any browsing history. Important: Only log into
+        sensitive websites on devices of people that you trust. Owners may be
+        able to gain access to your data. In Guest mode, you won't see or change
+        any other Chrome profile's info. When you exit Guest mode, your browsing
+        activity is deleted from the computer. Use Guest mode for: Letting
+        others borrow your computer or borrowing someone else’s computer. Using
+        a public computer, like one at a library or cafe. If you want to browse
+        privately on your own computer, use Incognito mode. You'll see your info
+        and settings without saving any browsing history.Important: Only log
+        into sensitive websites on devices of people that you trust. Owners may
+        be able to gain access to your data. In Guest mode, you won't see or
+        change any other Chrome profile's info. When you exit Guest mode, your
+        browsing activity is deleted from the computer. Use Guest mode for:
+        Letting others borrow your computer or borrowing someone else’s
+        computer. Using a public computer, like one at a library or cafe. If you
+        want to browse privately on your own computer, use Incognito mode.
+        You'll see your info and settings without saving any browsing history.
+        Important: Only log into sensitive websites on devices of people that
+        you trust. Owners may be able to gain access to your data. In Guest
+        mode, you won't see or change any other Chrome profile's info. When you
+        exit Guest mode, your browsing activity is deleted from the computer.
+        Use Guest mode for: Letting others borrow your computer or borrowing
+        someone else’s computer. Using a public computer, like one at a library
+        or cafe. If you want to browse privately on your own computer, use
+        Incognito mode. You'll see your info and settings without saving any
+        browsing history.
+      </div>
     </>
   );
 };

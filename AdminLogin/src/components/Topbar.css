@@ -1,12 +1,14 @@
-.container_Top{
-    background-color: rgb(214, 253, 253);
-    height: 2.5rem;
-    width: 100%;
-    position: absolute;
+.container_Top {
+  background-color: #263238;
+  height: 48px;
+  max-height: 3rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
-.userName{
-    text-align: end;
-    font-weight: bold;
-    padding: 10px;
-    text-transform: capitalize;
+.userName {
+  text-align: end;
+  font-weight: bold;
+  padding: 10px;
+  text-transform: capitalize;
 }

@@ -36,14 +36,14 @@ router.post("/", async (req, res) => {
         { email: email_Id },
         { $set: { loginTime: loginTime, logoutTime: logoutTime } }
       );
-      
+
       res.status(200).send({
         message: "Login Successful",
         email: email_Id,
         token: jwt_token,
         username: userData.username,
         loginTime: loginTime,
-        logoutTime: logoutTime
+        logoutTime: logoutTime,
       });
     }
   } catch (error) {

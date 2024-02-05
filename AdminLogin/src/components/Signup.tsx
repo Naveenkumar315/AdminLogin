@@ -15,7 +15,10 @@ interface formData {
 }
 
 const Signup = () => {
-  const [isSignUp, setSignUp] = useState(false);
+  const stateObj = {
+    isSignUp_: false,
+  };
+  const [state, setState] = useState(stateObj);
   const initialFormData = {
     username: "",
     email: "",
@@ -24,17 +27,20 @@ const Signup = () => {
   const [formData, setFormData] = useState<formData>(initialFormData);
 
   const handleReset = () => {
-    setSignUp(!isSignUp);
+    // update the state
+    setState((prevState) => ({
+      ...prevState,
+      isSignUp_: !prevState.isSignUp_,
+    }));
     setFormData(initialFormData);
   };
 
   const navigate: any = useNavigate();
 
   const handleSubmit = () => {
-    debugger;
     // navigate("/Dashboard");
 
-    if (isSignUp) {
+    if (state.isSignUp_) {
       if (!formData.username || !formData.email || !formData.password) {
         alert("please enter values");
         return;
@@ -57,10 +63,8 @@ const Signup = () => {
         alert("please enter values");
         return;
       }
-      debugger;
       AppService.loginUser(formData)
         .then((res: any) => {
-          debugger
           console.log("res", res);
           if (res.status === 200) {
             setToken(res?.data?.token);
@@ -68,7 +72,7 @@ const Signup = () => {
             sessionStorage.setItem("logoutTime", res?.data?.logoutTime);
             sessionStorage.setItem("loginTime", res?.data?.loginTime);
             sessionStorage.setItem("email", res?.data?.email);
-            navigate("/Dashboard");
+            navigate("/Home");
           } else {
             alert(res.data.Message);
           }
@@ -99,19 +103,19 @@ const Signup = () => {
       });
   };
 
-  setInterval
+  setInterval;
 
   return (
     <>
       <div className="container">
-        <button
+        {/* <button
           type="button"
           onClick={() => {
             verifyToken();
           }}
         >
           verify
-        </button>
+        </button> */}
         <div>
           <Typography
             variant="h4"
@@ -119,12 +123,12 @@ const Signup = () => {
             style={{ textShadow: "2px 2px #ccc" }}
             className="title"
           >
-            {isSignUp ? "SignUp" : "Login"}
+            {state.isSignUp_ ? "SignUp" : "Login"}
           </Typography>
         </div>
         <div className="inputContainer">
           <div className="inputRow ">
-            {isSignUp && (
+            {state.isSignUp_ && (
               <Input
                 onChange={(e: any) =>
                   setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -153,7 +157,7 @@ const Signup = () => {
               placeholder="Password"
               className="processInput"
             />
-            {!isSignUp && (
+            {!state.isSignUp_ && (
               <div className="forgetpaswordContainer">
                 <a href="#" className="forgetpasword">
                   Forgot Password?
@@ -168,11 +172,11 @@ const Signup = () => {
             type="submit"
             className="submitBtn"
             endIcon={
-              isSignUp ? <HowToRegOutlinedIcon /> : <LoginOutlinedIcon />
+              state.isSignUp_ ? <HowToRegOutlinedIcon /> : <LoginOutlinedIcon />
             }
             onClick={handleSubmit}
           >
-            {isSignUp ? "SignUp" : "Login"}
+            {state.isSignUp_ ? "SignUp" : "Login"}
           </Button>
           <Button
             onClick={() => {
@@ -180,7 +184,7 @@ const Signup = () => {
             }}
             sx={{ marginTop: 0, borderRadius: 3, marginBottom: 2 }}
           >
-            Change to {isSignUp ? "LOGIN" : "SIGNUP"}
+            Change to {state.isSignUp_ ? "LOGIN" : "SIGNUP"}
           </Button>
           {/* <Buttons onClick={handleSubmit} color="white" background="#050236" className="normal" text='Signup'/> */}
         </div>
@@ -192,8 +196,6 @@ const Signup = () => {
 export default Signup;
 
 export const getToken = () => {
-  console.log('console added')
   const token = sessionStorage.getItem("token");
-  console.log("Retrieved token from sessionStorage:", token);
   return token;
 };
