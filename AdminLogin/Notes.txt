@@ -11,3 +11,6 @@ for example - <LeftMenu />
 
 6. in map with html if we want to access debugger mode we need to use return method
 7. each loop have unique key - this is for first child element
+
+8. useState - always try update callback method. then only we update multiple time with same state.
+with help of useEffect we can see the updated state value. 

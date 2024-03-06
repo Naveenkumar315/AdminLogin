@@ -21,4 +21,5 @@ errors:
 2. Utilize the optional chaining operator (?) to avoid unintended errors when accessing properties in a chain, especially when dealing with undefined or null values.
 3. When performing calculations and assigning values, ensure that the variables being added have a valid numeric value, checking for '0' or other conditions as needed before the addition operation.
 4. In a loop, ensure that there is a check to confirm the array or collection has a minimum length of 1 before proceeding with the iteration.
+5. we can destructure the response objects { name } = res.body. it is easy for readability.
 
