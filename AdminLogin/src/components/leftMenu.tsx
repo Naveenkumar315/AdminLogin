@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import "../index.css";
 import GridViewIcon from "@mui/icons-material/GridView";
@@ -13,6 +13,7 @@ const leftMenu = (props: any) => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
+    
   const [drawer, setDrawer] = useState({
     width: 200,
     opacity: 1,
@@ -25,14 +26,25 @@ const leftMenu = (props: any) => {
       opacity: previous.width === 200 ? 0 : 1,
       leftArrow: !previous.leftArrow, //previous.width === 200 ? false : true,
     }));
+    props.sendDataToParent(drawer);
   };
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
+  useEffect(() => {
+    console.log("drawer data ==>  ", drawer);
+  }, [drawer]);
+
   return (
     <>
-      <div className="leftMenu">
+      <div
+        className="leftMenu"
+        style={{
+          width: `${drawer.width}px`,
+          transition: "width 0.2s ease-in-out",
+        }}
+      >
         <div>
           <div>
             {!drawer.leftArrow && (
@@ -44,7 +56,7 @@ const leftMenu = (props: any) => {
                 }}
                 className="arrowBtn"
               >
-                <KeyboardDoubleArrowRightIcon />
+                <KeyboardDoubleArrowLeftIcon />
               </span>
             )}
             {drawer.leftArrow && (
@@ -56,20 +68,13 @@ const leftMenu = (props: any) => {
                 }}
                 className="arrowBtn"
               >
-                <KeyboardDoubleArrowLeftIcon />
+                <KeyboardDoubleArrowRightIcon />
               </span>
             )}
           </div>
           {pages.map((page, index) => {
             return (
-              <div
-                className="sideBarItem"
-                style={{
-                  width: `${drawer.width}px`,
-                  transition: "width 0.2s ease-in-out",
-                }}
-                key={`icon${index}`}
-              >
+              <div className="sideBarItem" key={`icon${index}`}>
                 <Button
                   sx={{
                     my: 0,

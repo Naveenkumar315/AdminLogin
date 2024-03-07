@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
   res.send("Hello, Express!");
 });
 
-// Use the API routes
+// Use the API routes //api - end point
 app.use("/api", ApiRoutes()); // Mount the API routes under /api
 
 // Start the server and listen on a port

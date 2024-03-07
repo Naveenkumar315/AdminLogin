@@ -23,3 +23,6 @@ errors:
 4. In a loop, ensure that there is a check to confirm the array or collection has a minimum length of 1 before proceeding with the iteration.
 5. we can destructure the response objects { name } = res.body. it is easy for readability.
 
+6. http://localhost:3000 - url
+   "/books" - this called end point
+

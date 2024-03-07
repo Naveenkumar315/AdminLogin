@@ -13,10 +13,11 @@ import "./index.css";
 
 const Home = () => {
   const navigate: any = useNavigate();
+  let [state, setState]: any = useState({});
 
   useEffect(() => {
     // Set up the interval to call the function every 10 seconds
-    const intervalId = setInterval(sessionLogout, 5000);
+    const intervalId = setInterval(sessionLogout, 2000);
 
     // Clear the interval when the component is unmounted
     return () => clearInterval(intervalId);
@@ -39,6 +40,14 @@ const Home = () => {
       });
   };
 
+  const receiveDataFromChild = (data: any) => {
+    // console.log("data", data);
+    // setState((prev: any) => ({
+    //   ...prev,
+    //   width: data?.width === 200 ? 60 : 200,
+    // }));
+  };
+
   return (
     <>
       <div className="main-container">
@@ -46,16 +55,19 @@ const Home = () => {
           <TopBar />
         </div>
         <div className="main-parent-container">
-          <LeftMenu />
+          <LeftMenu sendDataToParent={receiveDataFromChild} />
           <div
             className="content-container"
             style={{
               transition: "width 0.5s ease-in-out",
               // animation: "fadeOut 0.1s ease-in-out",
               padding: "10px",
+              // maxWidth: `calc(100% - ${state?.width}px`,
+              width: "100%",
+              overflow: "auto",
             }}
           >
-            <div style={{ overflow: "scroll", height: "100vh" }}>
+            <div style={{ height: "100vh" }}>
               <Dashboard />
             </div>
           </div>

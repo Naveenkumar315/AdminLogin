@@ -45,6 +45,7 @@ const Signup = () => {
         alert("please enter values");
         return;
       }
+
       AppService.signupUser(formData)
         .then((res) => {
           if (res.data.res === 1) {
@@ -55,9 +56,7 @@ const Signup = () => {
             alert("user already created");
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch(console.error);
     } else {
       if (!formData.email || !formData.password) {
         alert("please enter values");
@@ -67,6 +66,11 @@ const Signup = () => {
         .then((res: any) => {
           console.log("res", res);
           if (res.status === 200) {
+            const {
+              username: name = "",
+              logoutTime = "",
+              loginTime = "",
+            } = res["data"] || {};
             setToken(res?.data?.token);
             setSession("userName", res?.data?.username);
             sessionStorage.setItem("logoutTime", res?.data?.logoutTime);

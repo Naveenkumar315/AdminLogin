@@ -1,10 +1,11 @@
 .container_Top {
-  background-color: #263238;
+  background-color: #0d0c22;
   height: 48px;
   max-height: 3rem;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: baseline;
 }
 .userName {
   text-align: end;

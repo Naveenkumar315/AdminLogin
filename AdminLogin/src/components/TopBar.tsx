@@ -42,7 +42,7 @@ const TopBar = () => {
       <div className="container_Top">
         {/* <p className="userName">Hello {sessionStorage.getItem("userName")}</p>
         <button onClick={() => handleLogout()}>logout</button> */}
-
+        <div style={{ color: "#fff", marginLeft: "10px" }}>Logo</div>
         <Box sx={{ flexGrow: 0, mt: "4px", mr: "10px", ml: "0.7%" }}>
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
